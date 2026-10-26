@@ -1,26 +1,34 @@
 
-      <h1>{{ .nombre }}</h1>
-      <p class="horario">{{ .dia }} · {{ .horario }}</p>
-      <p class="meta">Prof. {{ .instructor }} · {{ .duracion }} min · Nivel {{ .nivel }}</p>
-      <p>{{ .descripcion }}</p>
+      <h1>{{clase().nombre }}</h1>
+      <p class="horario">{{clase().dia }} · {{clase().horario }}</p>
+      <p class="meta">Prof. {{clase().instructor }} · {{clase().duracion }} min · Nivel {{clase().nivel }}</p>
+      <p>{{clase().descripcion }}</p>
 
       
-        
+        @if (anotado()) {
           <p class="ok">✔ Ya estás anotado en esta clase.</p>
-          <a >Ver mis clases</a>
-        
-          <button (click)="" [disabled]="enviando()">Anotarme</button>
-        
-        
-          <p class="error">{{ error() }}</p>
-        
-      
-        <p class="meta">Los administradores no se anotan a clases.</p>
-      
-        <p>Iniciá sesión para anotarte. <a >Ingresar</a></p>
-      
+          <a routerLink="/mis-clases">Ver mis clases</a>
+        }
 
-      <p><a >← Volver a la grilla</a></p>
-    
-      <p class="meta">Cargando...</p>
+        @if(!anotado()) {
+          <button (click)="" [disabled]="enviando()">Anotarme</button>
+        }
+
+        @if (error()) {
+          <p class="error">{{ error() }}</p>
+        }
+      
+        @if (esAdmin()) {
+          <p class="meta">Los administradores no se anotan a clases.</p>
+        }
+        
+        @if(!esAdmin() && !usuario()) {
+        <p>Iniciá sesión para anotarte. <a routerLink="/login">Ingresar</a></p>
+        }
+
+      <p><a routerLink="/clases">← Volver a la grilla</a></p>
+      
+      @if (cargando()) {
+        <p class="meta">Cargando...</p>
+      }
     

@@ -1,9 +1,9 @@
 // completar
 <article class="card">
-  <h3>{{ .nombre }}</h3>
-  <span class="horario">{{ .dia }} · {{ .horario }}</span>
+  <h3>{{ clase().nombre }}</h3>
+  <span class="horario">{{ clase().dia }} · {{ clase().horario }}</span>
   <span class="meta">
-    Prof. {{ .instructor }} · {{ .duracion }} min · {{ .nivel }}
+    Prof. {{ clase().instructor }} · {{ clase().duracion }} min · {{ clase().nivel }}
   </span>
-  <button (click)="">Ver detalle</button>
+  <button (click)="verDetalle.emit(clase().id)">Ver detalle</button>
 </article>

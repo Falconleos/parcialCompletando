@@ -3,6 +3,7 @@ import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ClasesService } from '../../services/clases.service';
 import { DIAS, porDiaYHorario } from '../../shared/constantes';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -12,13 +13,14 @@ import { DIAS, porDiaYHorario } from '../../shared/constantes';
 export class Inicio {
   private clasesSrv = inject(ClasesService);
   private fb = inject(NonNullableFormBuilder);
+  private route = inject(Router);
 
   dias = DIAS;
   clases = toSignal(this.clasesSrv.getClases(), { initialValue: [] });
 
   // completar
-  busqueda;
-  diaFiltro; // '' = todos los días
+  busqueda = this.fb.control('');
+  diaFiltro = this.fb.control(''); // '' = todos los días
 
   private texto = toSignal(this.busqueda.valueChanges, { initialValue: '' });
   private dia = toSignal(this.diaFiltro.valueChanges, { initialValue: '' });
@@ -34,6 +36,6 @@ export class Inicio {
   });
 
   irADetalle(id: number) {
-    
+    this.route.navigate(['/detalle', id]);
   }
 }
