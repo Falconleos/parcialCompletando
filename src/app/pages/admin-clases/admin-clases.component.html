@@ -1,0 +1,16 @@
+<h1>Administrar clases</h1>
+
+<!-- COMPLETAR -->
+<table>
+  <tr><th>Clase</th><th>Día</th><th>Horario</th><th>Instructor</th><th>Inscriptos</th><th></th></tr>
+  
+    <tr>
+      <td>{{ .nombre }}</td>
+      <td>{{ .dia }}</td>
+      <td>{{ .horario }}</td>
+      <td>{{ .instructor }}</td>
+      <td>{{ .inscriptos }}</td>
+      <td><a routerLink="'/admin/clases', .id">Ver detalle</a></td>
+    </tr>
+  
+</table>

@@ -1,0 +1,23 @@
+<p><a routerLink="/admin/clases">← Volver a clases</a></p>
+<!-- COMPLETAR -->
+
+  <h1>{{ .nombre }}</h1>
+  <p class="horario">{{ .dia }} · {{ .horario }}</p>
+  <p class="meta">Prof. {{ .instructor }} · {{ .duracion }} min · Nivel {{ .nivel }}</p>
+  <p>{{ .descripcion }}</p>
+
+  <h2>Inscriptos ({{ .length }})</h2>
+  <table>
+    <tr><th>Nombre</th><th>Email</th><th></th></tr>
+    
+      <tr>
+        <td>{{ .nombre }}</td>
+        <td>{{ .email }}</td>
+        <td><button class="secundario" (click)="quitar()">Quitar</button></td>
+      </tr>
+    
+      <tr><td colspan="3" class="meta">Sin inscriptos</td></tr>
+    
+  </table>
+
+  <p class="meta">Cargando...</p>

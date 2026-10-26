@@ -1,0 +1,17 @@
+<h1>Mis clases</h1>
+<!-- COMPLETAR -->
+
+  <table>
+    <tr><th>Clase</th><th>Día</th><th>Horario</th><th>Instructor</th><th></th></tr>
+    
+      <tr>
+        <td><a [routerLink]="['/clase', .id]">{{ .nombre }}</a></td>
+        <td>{{ .dia }}</td>
+        <td>{{ .horario }}</td>
+        <td>{{ .instructor }}</td>
+        <td><button class="secundario" (click)="cancelar(.inscripcionId)">Cancelar</button></td>
+      </tr>
+    
+  </table>
+
+  <p class="meta">Todavía no estás anotado en ninguna clase. <a routerLink="/">Ver grilla</a></p>
