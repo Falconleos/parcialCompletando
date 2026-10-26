@@ -4,7 +4,7 @@ import { NavBar } from './components/nav-bar/nav-bar.component';
 export const routes: Routes = [
   {
     path:'',
-    component:NavBar
+    component:NavBar,
   },
   {
     path:'**',

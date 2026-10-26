@@ -2,26 +2,26 @@
   <a routerLink="/" routerLinkActive='activo' [routerLinkActiveOptions]="{exact:true}" class="logo">🏋️ MiGym</a>
 
   <nav>
-    <a routerLink="/clases">Clases</a>
+    <a routerLink="clases">Clases</a>
 
     @if(authService.esUser()){
-      <a>Mis Clases</a>
+      <a routerLink="mis-clases">Mis Clases</a>
     }
 
     @if(authService.esAdmin()){
-      <a>Administrar Clases</a>
-      <a>Usuarios</a>
+      <a routerLink="admin-clases">Administrar Clases</a>
+      <a routerLink="admin-usuarios">Usuarios</a>
     }
     
   </nav>
 
   <div class="sesion"> // Nombre del usuario + rol + logout ó login
     @if(!authService.usuario()){
-      <a>Ingresar</a>
+      <a routerLink="login">Ingresar</a>
     }@else {
       <p>@{{authService.usuario()?.nombre}}</p>
       <p>{{authService.usuario()?.rol}}</p>
-      <a>Salir</a>
+      <a (click)="salir()">Salir</a>
     }
 
   </div>
